@@ -1,6 +1,7 @@
 {
   "name": "backoffice",
   "version": "0.0.0",
+  "homepage": "https://joacobraganca.github.io/proyecto-final-ati-backoffice/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
