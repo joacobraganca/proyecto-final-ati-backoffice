@@ -10,6 +10,7 @@ export interface Paciente {
   gpDoctor: string;
   partnerService: string;
   pathologies: string[];
+  pathologiesList: string[];
   assignedHealthHome: string;
   caresAndComments: string;
   admissionDate: Date;

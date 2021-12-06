@@ -81,7 +81,7 @@ export class PacienteComponent implements OnInit, OnDestroy {
             ?.name || ''
         );
       });
-      auxPatient.pathologies = pathologies;
+      auxPatient.pathologiesList = pathologies;
       auxList.push(auxPatient);
     });
     this.pacientes = auxList;

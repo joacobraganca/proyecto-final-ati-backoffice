@@ -228,4 +228,42 @@ export class CrearPacienteComponent implements OnInit {
 
     return [year, month, day].join('/');
   }
+
+  validateCI(event: any) {
+    let ci = event.target.value;
+
+    if (ci.length > 5) {
+      ci = this.clean_ci(ci);
+      var dig = ci[ci.length - 1];
+      ci = ci.replace(/[0-9]$/, '');
+      let valid = dig == this.validation_digit(ci);
+      if (valid) {
+        this.firstFormGroup.controls.document.setErrors(null);
+      } else {
+        this.firstFormGroup.controls.document.setErrors({ incorrect: true });
+      }
+    }
+  }
+
+  validation_digit(ci: string) {
+    var a = 0;
+    var i = 0;
+    if (ci.length <= 6) {
+      for (i = ci.length; i < 7; i++) {
+        ci = '0' + ci;
+      }
+    }
+    for (i = 0; i < 7; i++) {
+      a += (parseInt('2987634'[i]) * parseInt(ci[i])) % 10;
+    }
+    if (a % 10 === 0) {
+      return 0;
+    } else {
+      return 10 - (a % 10);
+    }
+  }
+
+  clean_ci(ci: string) {
+    return ci.replace(/\D/g, '');
+  }
 }

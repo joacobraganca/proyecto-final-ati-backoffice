@@ -10,7 +10,9 @@
       <mat-form-field class="input" appearance="fill">
         <mat-label>Número de documento (C.I)</mat-label>
         <input
+          (keyup)="validateCI($event)"
           matInput
+          name="ci"
           formControlName="document"
           placeholder="Ej.: 1.234.567-8"
           autocomplete="off"
@@ -134,7 +136,7 @@
               type="number"
               matInput
               formControlName="contactPhone"
-              placeholder="Número"
+              placeholder="Número (099999999)"
               autocomplete="off"
             />
           </mat-form-field>
