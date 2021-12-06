@@ -67,7 +67,6 @@ export class SignupComponent implements OnInit {
             } else {
               this.error('Enfermero registrado con éxito');
             }
-
           },
           (error) => {
             if (error.status >= 400 && error.status < 500) {
@@ -94,6 +93,6 @@ export class SignupComponent implements OnInit {
 
   redirect() {
     this.loading = true;
-    this.router.navigate(['dashboard']);
+    this.router.navigate(['dashboard/tasks']);
   }
 }
