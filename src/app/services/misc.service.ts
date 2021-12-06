@@ -3,16 +3,20 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Paciente } from '../interfaces/paciente';
 import { Misc } from '../interfaces/misc';
-
+import { HealthHome } from '../interfaces/healthHome';
 @Injectable({
   providedIn: 'root',
 })
 export class MiscService {
+  healthHome: HealthHome | undefined;
   hospitals: Misc[] = [];
   pathologies: Misc[] = [];
   partnerServices: Misc[] = [];
   emertencyServices: Misc[] = [];
 
+  setHealthHome(healthHome: HealthHome) {
+    this.healthHome = healthHome;
+  }
   setHospitals(hospitals: Misc[]) {
     this.hospitals = hospitals;
   }
@@ -26,6 +30,9 @@ export class MiscService {
     this.emertencyServices = emertencyServices;
   }
 
+  getHealthHomeLocal() {
+    return this.healthHome;
+  }
   getHospitalsLocal() {
     return this.hospitals;
   }
@@ -82,6 +89,17 @@ export class MiscService {
     };
     return this.http.get<Misc[]>(
       `https://healthhomeapi.herokuapp.com/api/emergencyService`,
+      { headers, observe: 'response' }
+    );
+  }
+
+  getHealthHomes(): Observable<HttpResponse<HealthHome[]>> {
+    const headers = {
+      'Content-type': 'application/json',
+      ['Authorization']: this.token,
+    };
+    return this.http.get<HealthHome[]>(
+      `https://healthhomeapi.herokuapp.com/api/healthHome/all`,
       { headers, observe: 'response' }
     );
   }

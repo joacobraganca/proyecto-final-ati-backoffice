@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
     this.getEmergencyService();
     this.getPatients();
     this.getNurses();
+    this.getHealthHomesNames();
   }
 
   getHospitals() {
@@ -103,5 +104,25 @@ export class DashboardComponent implements OnInit {
           console.log(error);
         }
       );
+  }
+
+  getHealthHomesNames() {
+    let id = this.userService.getHealthHome();
+
+    this.miscSevice.getHealthHomes().subscribe(
+      (response) => {
+        if (response.status === 200) {
+          let healthHome = response.body?.find(
+            (x: { _id: string }) => x._id === id
+          );
+          if (healthHome) {
+            this.miscSevice.setHealthHome(healthHome);
+          }
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
-  <button mat-button routerLink="/dashboard">
-    <h1>Casa de salud</h1>
-  </button>
+  <!-- <button mat-button routerLink="/dashboard/inicio"> -->
+  <h1>{{ getHealthHomeName() }}</h1>
+  <!-- </button> -->
   <span class="example-spacer"></span>
 
   <button mat-button routerLink="tasks">Tareas</button>
@@ -10,7 +10,13 @@
 
   <span class="example-spacer"></span>
 
-  <button mat-icon-button class="primary" routerLink="">
+  <h1>Sesión: {{ userName }}</h1>
+  <button
+    mat-icon-button
+    class="primary"
+    style="margin-left: 16px"
+    routerLink=""
+  >
     <mat-icon (click)="logout()">logout</mat-icon>
   </button>
 </mat-toolbar>

@@ -69,6 +69,6 @@ export class LoginComponent implements OnInit {
 
   redirect() {
     // this.loading = true;
-    this.router.navigate(['dashboard']);
+    this.router.navigate(['dashboard/tasks']);
   }
 }
