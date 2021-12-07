@@ -8,7 +8,6 @@
       matInput
       formControlName="title"
       placeholder="Ej.: Cambiar suero"
-
       autocomplete="off"
     />
   </mat-form-field>
@@ -78,13 +77,15 @@
     >
   </div>
 
-  <button
-    type="submit"
-    class="login-element-width button"
-    [disabled]="taskFormGroup.invalid"
-    mat-raised-button
-    color="primary"
-  >
-    Guardar tarea
-  </button>
+  <div class="buttonDiv">
+    <button
+      type="submit"
+      class="login-element-width button"
+      [disabled]="taskFormGroup.invalid"
+      mat-raised-button
+      color="primary"
+    >
+      Guardar tarea
+    </button>
+  </div>
 </form>
